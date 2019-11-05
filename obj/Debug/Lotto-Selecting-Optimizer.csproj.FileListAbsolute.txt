@@ -1,0 +1,10 @@
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\bin\Debug\Lotto-Selecting-Optimizer.exe.config
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\bin\Debug\Lotto-Selecting-Optimizer.exe
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\bin\Debug\Lotto-Selecting-Optimizer.pdb
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto_Selecting_Optimizer.LottoInterface.resources
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto_Selecting_Optimizer.Properties.Resources.resources
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.csproj.GenerateResource.cache
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.csproj.CoreCompileInputs.cache
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.exe
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.pdb
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.csprojAssemblyReference.cache
