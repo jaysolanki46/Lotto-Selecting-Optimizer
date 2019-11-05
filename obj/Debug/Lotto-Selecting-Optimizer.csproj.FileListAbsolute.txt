@@ -8,3 +8,4 @@ C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-
 C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.exe
 C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.pdb
 C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.csprojAssemblyReference.cache
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto_Selecting_Optimizer.LottoThankYouPage.resources
