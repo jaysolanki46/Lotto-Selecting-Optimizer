@@ -17,7 +17,7 @@ namespace Lotto_Selecting_Optimizer
         int counter = 0;
         ArrayList group = new ArrayList();
 
-
+        // Sql database connection
         string connetionString = @"Data Source=localhost;Initial Catalog=Lotto-Selecting-Optimizer;Integrated Security=True";
         SqlConnection cnn;
         SqlCommand cmd;
@@ -29,8 +29,10 @@ namespace Lotto_Selecting_Optimizer
             InitializeComponent();
         }
 
+        // Generates customer interface 
         private void LottoInterface_Load(object sender, EventArgs e)
         {
+            // Initialization of connection
             cnn = new SqlConnection(connetionString);
             cnn.Open();
             LblTicketNumber.Text = generateTicketNumber();
@@ -39,6 +41,7 @@ namespace Lotto_Selecting_Optimizer
             
         }
 
+        // Customer choice click
         void b_Click(object sender, EventArgs e)
         {
             var b = sender as Button;
@@ -81,19 +84,19 @@ namespace Lotto_Selecting_Optimizer
 
             foreach (string val in group)
             {
-                var finalButton = new CustomButton();
+                var finalButton = new Button();
                 finalButton.Text = val.ToString();
                 finalButton.Dock = DockStyle.Fill;
-                finalButton.BackColor = Color.LightGreen;
+                finalButton.BackColor = Color.LightGray;
                 this.tableLayoutPanelGroup.Controls.Add(finalButton);
             }
 
-            if(counter == 6) { lblExcellent.Visible = true; } else { lblExcellent.Visible = false; }
+            if(counter == 6) { pictureBoxAlert.Visible = true; } else { pictureBoxAlert.Visible = false; }
         }
 
+        // Customer buy
         private void BtnBuy_Click(object sender, EventArgs e)
         {
-
             string ticketNumber = "";
             string customerGroup = "";
             string binaryGroup = "";
@@ -102,22 +105,37 @@ namespace Lotto_Selecting_Optimizer
             {
                 foreach (string str in group)
                 {
+                    // Converts decimal to binary form by calling method toBinaryNumber
                     binaryGroup += toBinaryNumber(str); 
+
+                    // Seperating customer choices by adding comma between decimals
                     customerGroup += str + ",";
                 }
 
+                // Formatting customer ticket number
                 ticketNumber = LblTicketNumber.Text.Replace("-", "");
+
+                // Removes comma from the end of customer group string
                 customerGroup = customerGroup.TrimEnd(',');
 
+                // Add customer numbers group in to database table Tickets
+                try
+                {
+                    cnn.Open();
+                    sql = "INSERT INTO Tickets values (@ticketNumber, @customerGroup, @binaryGroup)";
+                    cmd = new SqlCommand(sql, cnn);
+                    cmd.Parameters.AddWithValue("@ticketNumber", ticketNumber);
+                    cmd.Parameters.AddWithValue("@customerGroup", customerGroup);
+                    cmd.Parameters.AddWithValue("@binaryGroup", binaryGroup);
+                    cmd.ExecuteNonQuery();
 
-                cnn.Open();
-                sql = "INSERT INTO Tickets values (@ticketNumber, @customerGroup, @binaryGroup)";
-                cmd = new SqlCommand(sql, cnn);
-                cmd.Parameters.AddWithValue("@ticketNumber", ticketNumber);
-                cmd.Parameters.AddWithValue("@customerGroup", customerGroup);
-                cmd.Parameters.AddWithValue("@binaryGroup", binaryGroup);
-                cmd.ExecuteNonQuery();
-                cnn.Close();
+                } catch(Exception exception)
+                {
+                    Console.WriteLine(exception.ToString());
+                } finally
+                {
+                    cnn.Close();
+                }
 
                 LottoThankYouPage thankYouPage = new LottoThankYouPage();
                 thankYouPage.Show();
@@ -125,11 +143,11 @@ namespace Lotto_Selecting_Optimizer
 
             } else
             {
-                MessageBox.Show("Please select atleast 6 choice !");
+                MessageBox.Show("Please select atleast 6 choices !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
+        // Populate all the numbers from 1 to 40
         private void populateNumbers()
         {
             var rowCount = 8;
@@ -152,7 +170,7 @@ namespace Lotto_Selecting_Optimizer
 
             for (int i = 0; i < rowCount * columnCount; i++)
             {
-                var b = new CustomButton();
+                var b = new Button();
                 b.Text = (i + 1).ToString();
                 b.Name = string.Format("b_{0}", i + 1);
                 b.Click += b_Click;
@@ -162,6 +180,7 @@ namespace Lotto_Selecting_Optimizer
             }
         }
 
+        // Generates ticket number for new customer
         private string generateTicketNumber()
         {
             string ticketNumber = "";
@@ -178,6 +197,7 @@ namespace Lotto_Selecting_Optimizer
             return ticketNumber;
         }
 
+        // Convert decimal to binary form
         private string toBinaryNumber(string val)
         {
             string result = "";

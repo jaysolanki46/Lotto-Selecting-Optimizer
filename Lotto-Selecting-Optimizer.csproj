@@ -46,9 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="LottoInterface.cs">
       <SubType>Form</SubType>
     </Compile>
