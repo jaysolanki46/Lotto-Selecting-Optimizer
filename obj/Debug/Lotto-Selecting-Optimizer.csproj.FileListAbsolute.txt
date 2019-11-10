@@ -9,3 +9,9 @@ C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-
 C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.pdb
 C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.csprojAssemblyReference.cache
 C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto_Selecting_Optimizer.LottoThankYouPage.resources
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\bin\Debug\Lotto-Selecting-Optimizer.exe.manifest
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\bin\Debug\Lotto-Selecting-Optimizer.application
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.exe.manifest
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\obj\Debug\Lotto-Selecting-Optimizer.application
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\bin\Debug\Lotto-Selecting-Optimizer.mdf
+C:\Users\jayso\source\repos\Lotto-Selecting-Optimizer\bin\Debug\Lotto-Selecting-Optimizer_log.ldf

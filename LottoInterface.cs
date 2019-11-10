@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +18,10 @@ namespace Lotto_Selecting_Optimizer
     {
         int counter = 0;
         ArrayList group = new ArrayList();
+        int[] binary = new int[41];
 
         // Sql database connection
-        string connetionString = @"Data Source=localhost;Initial Catalog=Lotto-Selecting-Optimizer;Integrated Security=True";
+        string connetionString = ConfigurationManager.ConnectionStrings["ConnectionStr"].ConnectionString;
         SqlConnection cnn;
         SqlCommand cmd;
         SqlDataReader reader;
@@ -34,11 +37,11 @@ namespace Lotto_Selecting_Optimizer
         {
             // Initialization of connection
             cnn = new SqlConnection(connetionString);
-            cnn.Open();
             LblTicketNumber.Text = generateTicketNumber();
             populateNumbers();
-            cnn.Close();
-            
+
+            // Reset binary group
+            initializeBinaryValues();
         }
 
         // Customer choice click
@@ -60,7 +63,7 @@ namespace Lotto_Selecting_Optimizer
                     }
                     else
                     {
-                        MessageBox.Show("Pick only 6 numbers as a group", "Warning");
+                        MessageBox.Show("Pick only 6 numbers as a group", "Opps!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 } else if(b.BackColor == Color.CornflowerBlue)
                 {
@@ -91,7 +94,7 @@ namespace Lotto_Selecting_Optimizer
                 this.tableLayoutPanelGroup.Controls.Add(finalButton);
             }
 
-            if(counter == 6) { pictureBoxAlert.Visible = true; } else { pictureBoxAlert.Visible = false; }
+            if (counter == 6) { pictureBoxAlert.Visible = true; } else { pictureBoxAlert.Visible = false; }
         }
 
         // Customer buy
@@ -100,17 +103,25 @@ namespace Lotto_Selecting_Optimizer
             string ticketNumber = "";
             string customerGroup = "";
             string binaryGroup = "";
+            string binaryGroup40 = "";
+            double decimalDigit = 0;
 
             if(counter == 6)
             {
                 foreach (string str in group)
                 {
+                    // Convert to 40 digit binary
+                    binaryGroup40 = toBinaryNumber40(str);
+
                     // Converts decimal to binary form by calling method toBinaryNumber
                     binaryGroup += toBinaryNumber(str); 
 
                     // Seperating customer choices by adding comma between decimals
                     customerGroup += str + ",";
                 }
+
+                // Convert into decimal digit
+                decimalDigit = toDecimalDigit(binaryGroup40);
 
                 // Formatting customer ticket number
                 ticketNumber = LblTicketNumber.Text.Replace("-", "");
@@ -122,11 +133,13 @@ namespace Lotto_Selecting_Optimizer
                 try
                 {
                     cnn.Open();
-                    sql = "INSERT INTO Tickets values (@ticketNumber, @customerGroup, @binaryGroup)";
+                    sql = "INSERT INTO Tickets values (@ticketNumber, @customerGroup, @binaryGroup, @binaryGroup40, @decimalDigit)";
                     cmd = new SqlCommand(sql, cnn);
                     cmd.Parameters.AddWithValue("@ticketNumber", ticketNumber);
                     cmd.Parameters.AddWithValue("@customerGroup", customerGroup);
                     cmd.Parameters.AddWithValue("@binaryGroup", binaryGroup);
+                    cmd.Parameters.AddWithValue("@binaryGroup40", binaryGroup40);
+                    cmd.Parameters.AddWithValue("@decimalDigit", decimalDigit);
                     cmd.ExecuteNonQuery();
 
                 } catch(Exception exception)
@@ -184,16 +197,27 @@ namespace Lotto_Selecting_Optimizer
         private string generateTicketNumber()
         {
             string ticketNumber = "";
-            sql = "SELECT TOP 1 TicketNumber FROM Tickets ORDER BY LottoId DESC";
-            cmd = new SqlCommand(sql, cnn);
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                ticketNumber = (Convert.ToInt64(reader.GetValue(0).ToString()) + 1).ToString();
-            }
+                cnn.Open();
+                sql = "SELECT TOP 1 TicketNumber FROM Tickets ORDER BY LottoId DESC";
+                cmd = new SqlCommand(sql, cnn);
+                reader = cmd.ExecuteReader();
 
-            ticketNumber = ticketNumber.Insert(5, "-");
+                while (reader.Read())
+                {
+                    ticketNumber = (Convert.ToInt64(reader.GetValue(0).ToString()) + 1).ToString();
+                }
+
+                ticketNumber = ticketNumber.Insert(5, "-");
+
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            } finally
+            {
+                cnn.Close();
+            }            
             return ticketNumber;
         }
 
@@ -212,6 +236,53 @@ namespace Lotto_Selecting_Optimizer
             result = Convert.ToString(number) + result;
 
             return result;
+        }
+
+        // Convert numbers group to binary
+        private string toBinaryNumber40(string val)
+        {
+           string result = "";
+
+           for(int i = 1; i <= 40; i++)
+            {
+                if(i == Convert.ToInt16(val))
+                {
+                    binary[i] = 1;
+                }
+                result += binary[i].ToString();
+            }
+
+            return result;
+        }
+
+        // Convert binary to decimal
+        private double toDecimalDigit(string binaryGroup40)
+        {
+            double digit = 0;
+            int val = 0;
+
+            for(int i = 0; i < binaryGroup40.Length; i++)
+            {
+                if(binaryGroup40[i].ToString() == "1")
+                {
+                    val = i + 1;
+                    digit += Math.Pow(40, val);
+                }
+            }
+
+            // Reset binary group
+            initializeBinaryValues();
+
+            return digit;
+        }
+
+        // Initialization of binary variable
+        private void initializeBinaryValues()
+        {
+            for (int i = 1; i <= 40; i++)
+            {
+                binary[i] = 0;
+            }
         }
     }
 }

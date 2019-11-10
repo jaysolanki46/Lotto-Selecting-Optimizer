@@ -50,12 +50,14 @@
             // linkLabelShopAgain
             // 
             this.linkLabelShopAgain.AutoSize = true;
+            this.linkLabelShopAgain.ForeColor = System.Drawing.Color.White;
+            this.linkLabelShopAgain.LinkColor = System.Drawing.Color.White;
             this.linkLabelShopAgain.Location = new System.Drawing.Point(549, 385);
             this.linkLabelShopAgain.Name = "linkLabelShopAgain";
-            this.linkLabelShopAgain.Size = new System.Drawing.Size(140, 23);
+            this.linkLabelShopAgain.Size = new System.Drawing.Size(134, 23);
             this.linkLabelShopAgain.TabIndex = 3;
             this.linkLabelShopAgain.TabStop = true;
-            this.linkLabelShopAgain.Text = "Shop Again ?";
+            this.linkLabelShopAgain.Text = "Shop Again?";
             this.linkLabelShopAgain.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelShopAgain_LinkClicked);
             // 
             // pictureBox1
@@ -73,7 +75,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(230, 281);
+            this.label2.Location = new System.Drawing.Point(254, 281);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(869, 47);
             this.label2.TabIndex = 14;

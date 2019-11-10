@@ -38,15 +38,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnBuy = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBoxAlert = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanelGroup = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxAlert = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -118,12 +118,11 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnBuy);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Location = new System.Drawing.Point(57, 228);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1024, 517);
+            this.panel2.Size = new System.Drawing.Size(1113, 517);
             this.panel2.TabIndex = 11;
             // 
             // btnBuy
@@ -131,24 +130,36 @@
             this.btnBuy.BackColor = System.Drawing.Color.White;
             this.btnBuy.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(121)))), ((int)(((byte)(255)))));
-            this.btnBuy.Location = new System.Drawing.Point(677, 282);
+            this.btnBuy.Location = new System.Drawing.Point(183, 170);
             this.btnBuy.Name = "btnBuy";
-            this.btnBuy.Size = new System.Drawing.Size(179, 49);
+            this.btnBuy.Size = new System.Drawing.Size(179, 54);
             this.btnBuy.TabIndex = 13;
-            this.btnBuy.Text = "BUY";
+            this.btnBuy.Text = "Deal";
             this.btnBuy.UseVisualStyleBackColor = false;
             this.btnBuy.Click += new System.EventHandler(this.BtnBuy_Click);
             // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.btnBuy);
             this.panel3.Controls.Add(this.pictureBoxAlert);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.tableLayoutPanelGroup);
             this.panel3.Location = new System.Drawing.Point(528, 15);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(480, 244);
+            this.panel3.Size = new System.Drawing.Size(562, 244);
             this.panel3.TabIndex = 12;
+            // 
+            // pictureBoxAlert
+            // 
+            this.pictureBoxAlert.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAlert.Image")));
+            this.pictureBoxAlert.Location = new System.Drawing.Point(468, 68);
+            this.pictureBoxAlert.Name = "pictureBoxAlert";
+            this.pictureBoxAlert.Size = new System.Drawing.Size(74, 65);
+            this.pictureBoxAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxAlert.TabIndex = 12;
+            this.pictureBoxAlert.TabStop = false;
+            this.pictureBoxAlert.Visible = false;
             // 
             // label4
             // 
@@ -191,17 +202,6 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBoxAlert
-            // 
-            this.pictureBoxAlert.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAlert.Image")));
-            this.pictureBoxAlert.Location = new System.Drawing.Point(192, 152);
-            this.pictureBoxAlert.Name = "pictureBoxAlert";
-            this.pictureBoxAlert.Size = new System.Drawing.Size(102, 68);
-            this.pictureBoxAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxAlert.TabIndex = 12;
-            this.pictureBoxAlert.TabStop = false;
-            this.pictureBoxAlert.Visible = false;
-            // 
             // LottoInterface
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -222,8 +222,8 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,8 +241,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGroup;
         private System.Windows.Forms.Button btnBuy;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBoxAlert;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
