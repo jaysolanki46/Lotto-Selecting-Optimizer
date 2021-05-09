@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotto-Selecting-Optimizer", "Lotto-Selecting-Optimizer.csproj", "{D21D1531-1015-4033-9D32-CE0D018FFEF5}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Lotto_Setup", "..\..\..\Desktop\Lotto\Lotto_Setup\Lotto_Setup.vdproj", "{34C8D43D-A326-4954-8A04-E3F3F51ADF00}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +15,6 @@ Global
 		{D21D1531-1015-4033-9D32-CE0D018FFEF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D21D1531-1015-4033-9D32-CE0D018FFEF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D21D1531-1015-4033-9D32-CE0D018FFEF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34C8D43D-A326-4954-8A04-E3F3F51ADF00}.Debug|Any CPU.ActiveCfg = Debug
-		{34C8D43D-A326-4954-8A04-E3F3F51ADF00}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
